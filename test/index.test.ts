@@ -38,6 +38,13 @@ const tests: Record<string, Test> = {
     output:
       "const module = require('module')\nconst Component = require('../components/Component')",
   },
+  ["should support 'require()' imports #2"]: {
+    options: { config: { paths: { '@/*': ['./src/*'] }, "baseUrl": ".", } },
+    path: './src/pages/Page.ts',
+    input: "const { a }: typeof import('@/a') = require('@/a')",
+    output:
+      "const { a }: typeof import('../a') = require('../a')",
+  },
   ['should support side effect imports']: {
     options: { config },
     path: './src/pages/Page.ts',

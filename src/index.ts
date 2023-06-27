@@ -92,7 +92,7 @@ function resolveImports(
 
     const relative = path.relative(current, target).replace(/\\/g, '/')
 
-    lines[imported.index] = line.replace(imported.import, relative)
+    lines[imported.index] = line.replaceAll(imported.import, relative)
   }
 
   return lines
